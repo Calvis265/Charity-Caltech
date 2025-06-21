@@ -16,6 +16,7 @@ const GenerateSuccessStoryInputSchema = z.object({
   studentName: z.string().describe('The name of the student.'),
   programName: z.string().describe('The name of the program the student participated in.'),
   outcome: z.string().describe('A description of the positive outcome for the student as a result of the program.'),
+  studentPhotoDataUri: z.string().optional().describe("A photo of the student, as a data URI that must include a MIME type and use Base64 encoding. Expected format: 'data:<mimetype>;base64,<encoded_data>'."),
 });
 export type GenerateSuccessStoryInput = z.infer<typeof GenerateSuccessStoryInputSchema>;
 
@@ -33,6 +34,10 @@ const prompt = ai.definePrompt({
   input: {schema: GenerateSuccessStoryInputSchema},
   output: {schema: GenerateSuccessStoryOutputSchema},
   prompt: `You are a skilled storyteller working for a nonprofit organization that supports needy and vulnerable students. Your task is to create an uplifting and compelling success story based on the provided student data and program outcomes.
+{{#if studentPhotoDataUri}}
+Use the provided photo of the student as inspiration for the story.
+Photo: {{media url=studentPhotoDataUri}}
+{{/if}}
 
 Student Name: {{{studentName}}}
 Program Name: {{{programName}}}

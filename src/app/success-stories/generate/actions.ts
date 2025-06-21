@@ -8,6 +8,7 @@ const formSchema = z.object({
   studentName: z.string().min(2),
   programName: z.string().min(3),
   outcome: z.string().min(10),
+  studentPhotoDataUri: z.string().optional(),
 });
 
 type GenerateStoryResult = 

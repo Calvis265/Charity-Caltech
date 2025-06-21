@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -21,17 +22,29 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, Copy, Sparkles } from "lucide-react";
+import { Loader2, Copy, Sparkles, UserRound } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const formSchema = z.object({
   studentName: z.string().min(2, "Student name is required."),
+  studentPhoto: z.any().optional(),
   programName: z.string().min(3, "Program name is required."),
   outcome: z.string().min(10, "Outcome description must be at least 10 characters."),
 });
 
+const toDataUri = (file: File): Promise<string> => 
+    new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+});
+
+
 export default function GenerateSuccessStoryPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [generatedStory, setGeneratedStory] = useState("");
+  const [generatedResult, setGeneratedResult] = useState<{ story: string; photo: string | null }>({ story: "", photo: null });
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -45,12 +58,31 @@ export default function GenerateSuccessStoryPage() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
-    setGeneratedStory("");
+    setGeneratedResult({ story: "", photo: null });
     
-    const result = await generateStoryAction(values);
+    let studentPhotoDataUri: string | undefined = undefined;
+    if (values.studentPhoto && values.studentPhoto[0]) {
+        try {
+            studentPhotoDataUri = await toDataUri(values.studentPhoto[0]);
+        } catch (error) {
+            toast({ variant: "destructive", title: "Error", description: "Could not process image file."});
+            setIsLoading(false);
+            return;
+        }
+    }
+
+    const result = await generateStoryAction({
+        studentName: values.studentName,
+        programName: values.programName,
+        outcome: values.outcome,
+        studentPhotoDataUri,
+    });
 
     if (result.success) {
-      setGeneratedStory(result.story.successStory);
+      setGeneratedResult({
+          story: result.story.successStory,
+          photo: studentPhotoDataUri || null,
+      });
       toast({
         title: "Story Created!",
         description: "Your new story has been created below.",
@@ -67,7 +99,7 @@ export default function GenerateSuccessStoryPage() {
   }
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(generatedStory);
+    navigator.clipboard.writeText(generatedResult.story);
     toast({
       title: "Copied to clipboard!",
     });
@@ -103,6 +135,37 @@ export default function GenerateSuccessStoryPage() {
                           <FormLabel>Student's Name</FormLabel>
                           <FormControl>
                             <Input placeholder="e.g., Calvis O." {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="studentPhoto"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Student's Photo (Optional)</FormLabel>
+                          <FormControl>
+                            <div className="flex items-center space-x-4">
+                              <Avatar className="h-20 w-20">
+                                <AvatarImage src={photoPreview ?? undefined} alt="Student photo preview" />
+                                <AvatarFallback><UserRound className="h-8 w-8"/></AvatarFallback>
+                              </Avatar>
+                              <Input 
+                                type="file" 
+                                accept="image/*" 
+                                className="flex-1"
+                                onChange={(e) => {
+                                  field.onChange(e.target.files);
+                                  if (e.target.files && e.target.files[0]) {
+                                    setPhotoPreview(URL.createObjectURL(e.target.files[0]));
+                                  } else {
+                                    setPhotoPreview(null);
+                                  }
+                                }}
+                              />
+                            </div>
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -161,14 +224,19 @@ export default function GenerateSuccessStoryPage() {
               </CardHeader>
               <CardContent>
                 <div className="relative">
+                   {generatedResult.photo && (
+                    <div className="mb-4 aspect-video relative w-full overflow-hidden rounded-md">
+                        <Image src={generatedResult.photo} alt="Generated story student photo" layout="fill" objectFit="cover" />
+                    </div>
+                  )}
                   <Textarea
                     placeholder={isLoading ? "Creating your story..." : "Your new story will appear here."}
-                    value={generatedStory}
-                    onChange={(e) => setGeneratedStory(e.target.value)}
+                    value={generatedResult.story}
+                    onChange={(e) => setGeneratedResult(prev => ({...prev, story: e.target.value}))}
                     className="min-h-[280px] bg-secondary/50"
-                    readOnly={!generatedStory && !isLoading}
+                    readOnly={!generatedResult.story && !isLoading}
                   />
-                  {generatedStory && (
+                  {generatedResult.story && (
                     <Button
                       variant="ghost"
                       size="icon"
@@ -179,7 +247,7 @@ export default function GenerateSuccessStoryPage() {
                     </Button>
                   )}
                   {isLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-background/50">
+                    <div className="absolute inset-0 flex items-center justify-center bg-background/50 rounded-md">
                         <Loader2 className="h-8 w-8 animate-spin text-primary" />
                     </div>
                   )}
