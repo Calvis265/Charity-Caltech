@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn(inter.variable, spaceGrotesk.variable, 'dark')} suppressHydrationWarning>
+    <html lang="en" className={cn(inter.variable, spaceGrotesk.variable)} suppressHydrationWarning>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
         <ConditionalLayout>{children}</ConditionalLayout>
         <Toaster />
