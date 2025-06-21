@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Heart, GraduationCap } from 'lucide-react';
+import { Menu, X, Heart, GraduationCap, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -43,10 +43,15 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <div className="hidden md:flex items-center gap-4 ml-4">
+          <div className="hidden md:flex items-center gap-2 ml-4">
              <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
               <Link href="/donate">
                 <Heart className="mr-2 h-4 w-4" /> Donate
+              </Link>
+            </Button>
+            <Button asChild variant="ghost" size="icon" aria-label="Admin Login">
+              <Link href="/admin/login">
+                <LogIn className="h-5 w-5" />
               </Link>
             </Button>
           </div>
@@ -83,6 +88,17 @@ export function Header() {
                       {link.label}
                     </Link>
                   ))}
+                  <Link
+                      href="/admin/login"
+                      className={cn(
+                        'text-lg font-medium transition-colors hover:text-primary flex items-center',
+                        pathname === '/admin/login' ? 'text-primary' : 'text-foreground'
+                      )}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <LogIn className="mr-2 h-5 w-5" />
+                      Admin Login
+                  </Link>
                 </nav>
                  <div className="mt-auto pt-6">
                    <Button asChild size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
