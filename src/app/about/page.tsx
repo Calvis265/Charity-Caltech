@@ -2,11 +2,28 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import Image from 'next/image';
 
+const founders = [
+  { 
+    name: 'Calvis Onyango', 
+    role: 'Co-Founder & CEO', 
+    avatar: 'https://placehold.co/100x100', 
+    hint: 'man smiling',
+    description: 'Calvis is the visionary behind Caltech, driven by a lifelong passion for education and a belief in its power to transform lives. He leads the organization with a focus on strategic growth and impactful programs.'
+  },
+  { 
+    name: 'Merceline Onyango', 
+    role: 'Co-Founder & Director of Programs', 
+    avatar: 'https://placehold.co/100x100', 
+    hint: 'woman portrait',
+    description: 'Merceline provides the operational backbone for Caltech. Her expertise in program management and community outreach ensures that our initiatives are effective, sustainable, and truly meet the needs of our students.'
+  },
+];
+
 const teamMembers = [
-  { name: 'Alice Johnson', role: 'Founder & CEO', avatar: 'https://placehold.co/100x100', hint: 'woman portrait' },
-  { name: 'Calvis Onyango', role: 'Director of Programs', avatar: 'https://placehold.co/100x100', hint: 'man smiling' },
   { name: 'Charlie Brown', role: 'Head of Mentorship', avatar: 'https://placehold.co/100x100', hint: 'person glasses' },
   { name: 'Diana Miller', role: 'Volunteer Coordinator', avatar: 'https://placehold.co/100x100', hint: 'woman smiling' },
+  { name: 'David Lee', role: 'Technology Lead', avatar: 'https://placehold.co/100x100', hint: 'man tech' },
+  { name: 'Sophia Chen', role: 'Community Manager', avatar: 'https://placehold.co/100x100', hint: 'woman community' },
 ];
 
 const partners = [
@@ -68,6 +85,29 @@ export default function AboutPage() {
 
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-headline font-semibold text-center mb-12">Meet Our Founders</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            {founders.map((founder) => (
+              <Card key={founder.name} className="flex flex-col items-center text-center p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Avatar className="w-28 h-28 mb-4 border-2 border-primary">
+                  <AvatarImage src={founder.avatar} alt={founder.name} data-ai-hint={founder.hint} />
+                  <AvatarFallback>{founder.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                </Avatar>
+                <CardHeader className="p-0">
+                  <CardTitle className="font-headline text-2xl">{founder.name}</CardTitle>
+                  <p className="text-primary font-semibold">{founder.role}</p>
+                </CardHeader>
+                <CardContent className="pt-4">
+                  <p className="text-muted-foreground">{founder.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 bg-secondary/50">
+        <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-center mb-12">Meet Our Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member) => (
@@ -84,7 +124,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-primary/10">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-center mb-12">Our Partners</h2>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
