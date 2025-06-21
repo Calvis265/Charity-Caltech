@@ -60,7 +60,7 @@ export function Footer() {
             <div className="aspect-video w-full rounded-lg overflow-hidden shadow-lg">
               {isMounted ? (
                  <iframe
-                  src="https://maps.google.com/maps?q=123%20Education%20Lane,%20Knowledge%20City&z=13&ie=UTF8&iwloc=&output=embed"
+                  src="https://maps.google.com/maps?q=Kibera%2C%20Nairobi%2C%20Kenya&z=13&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   className="grayscale hover:grayscale-0 transition-all duration-300"
@@ -75,7 +75,7 @@ export function Footer() {
               )}
             </div>
              <address className="not-italic text-sm text-muted-foreground mt-2">
-              <p>123 Education Lane, Knowledge City, 12345</p>
+              <p>Kibera, Nairobi, Kenya</p>
             </address>
           </div>
         </div>
