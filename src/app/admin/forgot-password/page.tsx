@@ -18,7 +18,7 @@ import { GraduationCap } from 'lucide-react';
 export default function ForgotPasswordPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-secondary/50 p-4">
-      <Card className="mx-auto w-full max-w-sm animate-in fade-in-0 zoom-in-95 slide-in-from-bottom-2 duration-500 transition-all focus-within:shadow-lg focus-within:shadow-primary/20">
+      <Card className="mx-auto w-full max-w-sm animated-glow-border">
         <CardHeader className="text-center">
           <Link href="/" className="mx-auto mb-4 flex w-fit items-center space-x-2">
             <GraduationCap className="h-8 w-8 text-primary" />

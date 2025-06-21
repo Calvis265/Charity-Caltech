@@ -66,3 +66,57 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  .animated-glow-border {
+    position: relative;
+    border: 2px solid transparent;
+    background-color: hsl(var(--card));
+    background-clip: padding-box;
+    border-radius: var(--radius);
+  }
+
+  .animated-glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--angle),
+      hsl(var(--accent)),
+      hsl(var(--primary)),
+      hsl(var(--accent))
+    );
+    animation: rotate 4s linear infinite;
+  }
+
+  .animated-glow-border::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    z-index: -1;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--angle),
+      hsl(var(--accent)),
+      hsl(var(--primary)),
+      hsl(var(--accent))
+    );
+    animation: rotate 4s linear infinite;
+    filter: blur(10px);
+    opacity: 0.8;
+  }
+}
