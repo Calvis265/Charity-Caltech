@@ -32,17 +32,10 @@ const stories = [
 export default function SuccessStoriesPage() {
   return (
     <div>
-      <section className="relative h-[50vh] flex items-center justify-center text-center text-white">
-        <Image
-          src="https://placehold.co/1600x800"
-          alt="Students celebrating success"
-          data-ai-hint="happy students graduation"
-          fill
-          className="absolute inset-0 z-0 brightness-50 object-cover"
-        />
-        <div className="relative z-10 p-4 max-w-4xl">
-          <h1 className="text-4xl md:text-5xl font-headline font-bold drop-shadow-lg">Success Stories</h1>
-          <p className="mt-4 text-lg md:text-xl text-white/90 max-w-3xl mx-auto drop-shadow-md">
+      <section className="bg-primary/10 py-20 md:py-32">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-headline font-bold">Success Stories</h1>
+          <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Read the inspiring journeys of students whose lives have been transformed through our programs and your support.
           </p>
         </div>
