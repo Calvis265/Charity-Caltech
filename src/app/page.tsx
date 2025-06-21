@@ -35,7 +35,7 @@ export default function Home() {
 
   const testimonials = [
     {
-      quote: 'EduAssist changed my life. The sponsorship allowed me to pursue my dreams without financial worry. I am forever grateful.',
+      quote: 'Caltech changed my life. The sponsorship allowed me to pursue my dreams without financial worry. I am forever grateful.',
       name: 'Jane Doe',
       role: 'University Student',
       avatar: 'https://placehold.co/100x100',

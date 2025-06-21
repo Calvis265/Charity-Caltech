@@ -21,7 +21,7 @@ export default function AboutPage() {
     <div>
       <section className="bg-primary/10 py-20 md:py-32">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-headline font-bold">About EduAssist</h1>
+          <h1 className="text-4xl md:text-5xl font-headline font-bold">About Caltech</h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Learn about our journey, our mission, and the people driving our passion for education forward.
           </p>
@@ -33,7 +33,7 @@ export default function AboutPage() {
           <div>
             <h2 className="text-3xl font-headline font-semibold mb-4">Our Story</h2>
             <p className="text-muted-foreground mb-4">
-              EduAssist was founded in 2015 with a simple yet powerful idea: that every child, regardless of their circumstances, deserves access to quality education. What started as a small community initiative to help a handful of students has grown into a multi-faceted organization supporting hundreds of young learners across the region.
+              Caltech was founded in 2015 with a simple yet powerful idea: that every child, regardless of their circumstances, deserves access to quality education. What started as a small community initiative to help a handful of students has grown into a multi-faceted organization supporting hundreds of young learners across the region.
             </p>
             <p className="text-muted-foreground">
               We've witnessed firsthand how education can break the cycle of poverty, open doors to new opportunities, and empower individuals to build better futures for themselves and their communities. Our journey is fueled by the success of our students and the generosity of our supporters.

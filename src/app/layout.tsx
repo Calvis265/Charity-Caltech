@@ -6,8 +6,8 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 
 export const metadata: Metadata = {
-  title: 'EduAssist - Supporting Vulnerable Students',
-  description: 'A nonprofit organization dedicated to providing educational opportunities and support to needy and vulnerable students.',
+  title: 'Caltech',
+  description: 'A nonprofit organization dedicated to providing educational opportunities and support to students.',
 };
 
 export default function RootLayout({

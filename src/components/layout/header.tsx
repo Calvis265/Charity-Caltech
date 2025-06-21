@@ -25,7 +25,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <span className="font-bold font-headline text-xl text-primary">EduAssist</span>
+          <span className="font-bold font-headline text-xl text-primary">Caltech</span>
         </Link>
         <div className="flex flex-1 items-center justify-end space-x-2">
           <nav className="hidden md:flex gap-6">
@@ -60,7 +60,7 @@ export function Header() {
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between pb-4 border-b">
                    <Link href="/" className="flex items-center space-x-2" onClick={() => setIsMobileMenuOpen(false)}>
-                    <span className="font-bold font-headline text-xl text-primary">EduAssist</span>
+                    <span className="font-bold font-headline text-xl text-primary">Caltech</span>
                   </Link>
                    <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(false)}>
                       <X className="h-6 w-6" />

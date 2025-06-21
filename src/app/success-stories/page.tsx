@@ -10,7 +10,7 @@ const stories = [
     studentName: 'Maria K.',
     image: 'https://placehold.co/600x400',
     hint: 'student smiling graduation',
-    excerpt: 'Thanks to EduAssist\'s sponsorship, Maria was able to complete her high school education and secure a scholarship to study computer science at a top university. She is now a role model in her community.',
+    excerpt: 'Thanks to Caltech\'s sponsorship, Maria was able to complete her high school education and secure a scholarship to study computer science at a top university. She is now a role model in her community.',
   },
   {
     title: 'A Mentor\'s Guidance Lights the Way',
