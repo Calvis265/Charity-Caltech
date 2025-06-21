@@ -30,7 +30,7 @@ export function Footer() {
     { name: 'WhatsApp', icon: <WhatsappIcon />, href: 'https://wa.me/254757056917' },
     { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, href: 'https://www.linkedin.com/in/calvisonyango/' },
     { name: 'Twitter', icon: <Twitter className="h-5 w-5" />, href: '#' },
-    { name: 'Facebook', icon: <Facebook className="h-5 w-5" />, href: '#' },
+    { name: 'Facebook', icon: <Facebook className="h-5 w-5" />, href: 'https://www.facebook.com/calvisnyang' },
     { name: 'Instagram', icon: <Instagram className="h-5 w-5" />, href: '#' },
     { name: 'YouTube', icon: <Youtube className="h-5 w-5" />, href: '#' },
   ];
