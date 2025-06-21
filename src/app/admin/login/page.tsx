@@ -68,7 +68,7 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-secondary/50 p-4 font-body">
+    <div className="flex min-h-[calc(100vh-120px)] items-center justify-center p-4 font-body">
       <div
         className={cn(
           'relative h-[550px] w-full max-w-4xl overflow-hidden rounded-lg bg-card text-card-foreground shadow-2xl'
