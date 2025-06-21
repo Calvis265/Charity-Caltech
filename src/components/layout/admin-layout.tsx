@@ -1,5 +1,7 @@
+
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   Bell,
@@ -32,16 +34,39 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { GraduationCap } from 'lucide-react';
 
+const allNavLinks = [
+  { href: '/admin/dashboard', label: 'Dashboard', icon: Home, roles: ['Admin', 'Story Contributor'] },
+  { href: '/success-stories/generate', label: 'Story Generator', icon: Newspaper, roles: ['Admin', 'Story Contributor'] },
+  { href: '/admin/volunteers', label: 'Volunteers', icon: Users, roles: ['Admin'] },
+  { href: '#', label: 'Donations', icon: DollarSign, badge: 6, roles: ['Admin'] },
+];
+
 export function AdminLayoutContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const [userRole, setUserRole] = useState<string | null>(null);
 
-  const navLinks = [
-    { href: '/admin/dashboard', label: 'Dashboard', icon: Home },
-    { href: '/success-stories/generate', label: 'Story Generator', icon: Newspaper },
-    { href: '/admin/volunteers', label: 'Volunteers', icon: Users },
-    // These are placeholder links for now
-    { href: '#', label: 'Donations', icon: DollarSign, badge: 6 },
-  ];
+  useEffect(() => {
+    // In a real app, you'd get this from an auth context.
+    // For this prototype, we'll read it from local storage.
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      try {
+        const user = JSON.parse(storedUser);
+        setUserRole(user.role);
+      } catch (e) {
+        console.error("Failed to parse user from localStorage", e);
+        // Clear invalid storage
+        localStorage.removeItem('user');
+      }
+    }
+  }, []);
+  
+  const navLinks = allNavLinks.filter(link => userRole && link.roles.includes(userRole));
+
+  const handleLogout = () => {
+    // Clear user session from local storage
+    localStorage.removeItem('user');
+  };
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -157,7 +182,7 @@ export function AdminLayoutContent({ children }: { children: React.ReactNode }) 
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild><Link href="/">Back to Site</Link></DropdownMenuItem>
-              <DropdownMenuItem asChild><Link href="/admin/login">Logout</Link></DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogout} asChild><Link href="/admin/login">Logout</Link></DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>

@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast';
 import { GraduationCap, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { loginAction, signUpAction } from './actions';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export default function AdminLoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -27,11 +28,13 @@ export default function AdminLoginPage() {
 
     const result = await loginAction(values);
 
-    if (result.success) {
+    if (result.success && result.user) {
       toast({
         title: 'Login Successful',
-        description: 'Redirecting to dashboard...',
+        description: `Redirecting to dashboard as ${result.user.role}.`,
       });
+      // Store user info in local storage to simulate a session
+      localStorage.setItem('user', JSON.stringify(result.user));
       router.push('/admin/dashboard');
     } else {
       toast({
@@ -71,7 +74,7 @@ export default function AdminLoginPage() {
     <div className="flex min-h-[calc(100vh-120px)] items-center justify-center p-4 font-body">
       <div
         className={cn(
-          'relative h-[550px] w-full max-w-4xl overflow-hidden rounded-lg bg-card text-card-foreground shadow-2xl'
+          'relative h-[620px] w-full max-w-4xl overflow-hidden rounded-lg bg-card text-card-foreground shadow-2xl'
         )}
         id="container"
       >
@@ -100,6 +103,18 @@ export default function AdminLoginPage() {
               <div className="grid gap-2 text-left">
                 <Label htmlFor="signup-password">Password</Label>
                 <Input id="signup-password" name="password" type="password" required />
+              </div>
+              <div className="grid gap-2 text-left">
+                <Label htmlFor="role">Role</Label>
+                 <Select name="role" defaultValue="Story Contributor" required>
+                    <SelectTrigger id="role">
+                        <SelectValue placeholder="Select a role" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Admin">Admin</SelectItem>
+                        <SelectItem value="Story Contributor">Story Contributor</SelectItem>
+                    </SelectContent>
+                 </Select>
               </div>
             </div>
             <Button type="submit" disabled={isSigningUp} className="mt-6 rounded-full px-12 py-3 text-sm font-bold uppercase tracking-wider transition-transform duration-75 ease-in active:scale-95">

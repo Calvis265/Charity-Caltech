@@ -7,6 +7,7 @@ const signUpSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
   password: z.string().min(6, { message: 'Password must be at least 6 characters.' }),
+  role: z.enum(['Admin', 'Story Contributor']),
 });
 
 const loginSchema = z.object({
@@ -17,6 +18,10 @@ const loginSchema = z.object({
 type AuthResult = {
   success: boolean;
   message: string;
+  user?: {
+    email: string;
+    role: 'Admin' | 'Story Contributor';
+  }
 };
 
 export async function signUpAction(values: unknown): Promise<AuthResult> {
@@ -28,7 +33,7 @@ export async function signUpAction(values: unknown): Promise<AuthResult> {
 
   // In a real application, you would save the user to a database.
   // Here, we're just simulating a successful sign-up.
-  console.log('New user signed up:', validation.data.email);
+  console.log('New user signed up:', validation.data.email, 'with role:', validation.data.role);
 
   // Simulate network delay
   await new Promise(resolve => setTimeout(resolve, 1000));
@@ -46,15 +51,21 @@ export async function loginAction(values: unknown): Promise<AuthResult> {
     const { email, password } = validation.data;
 
     // In a real application, you would verify credentials against a database.
-    // Here, we're just simulating a successful login for any input.
     console.log('User logged in:', email);
 
     // Simulate network delay
     await new Promise(resolve => setTimeout(resolve, 1000));
-
+    
     // A real implementation would check the password, etc.
     if (password) {
-        return { success: true, message: 'Login successful!' };
+        // Simulate role-based access. In a real app, this would come from the database.
+        const isAdmin = email.toLowerCase() === 'calvis@admin.com';
+        const user = {
+            email: email,
+            role: isAdmin ? 'Admin' : 'Story Contributor' as 'Admin' | 'Story Contributor'
+        };
+        
+        return { success: true, message: 'Login successful!', user };
     }
 
     return { success: false, message: 'Invalid email or password.' };
