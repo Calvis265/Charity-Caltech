@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const teamMembers = [
   { name: 'Alice Johnson', role: 'Founder & CEO', avatar: 'https://placehold.co/100x100', hint: 'woman portrait' },
-  { name: 'Bob Williams', role: 'Director of Programs', avatar: 'https://placehold.co/100x100', hint: 'man smiling' },
+  { name: 'Calvis Onyango', role: 'Director of Programs', avatar: 'https://placehold.co/100x100', hint: 'man smiling' },
   { name: 'Charlie Brown', role: 'Head of Mentorship', avatar: 'https://placehold.co/100x100', hint: 'person glasses' },
   { name: 'Diana Miller', role: 'Volunteer Coordinator', avatar: 'https://placehold.co/100x100', hint: 'woman smiling' },
 ];

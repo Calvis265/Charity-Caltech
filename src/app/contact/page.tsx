@@ -38,8 +38,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold">Email Us</h3>
-                  <a href="mailto:info@caltech.org" className="text-muted-foreground hover:text-primary">
-                    info@caltech.org
+                  <a href="mailto:calvisonyango265@gmail.com" className="text-muted-foreground hover:text-primary">
+                    calvisonyango265@gmail.com
                   </a>
                 </div>
               </div>

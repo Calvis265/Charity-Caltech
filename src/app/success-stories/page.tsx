@@ -7,10 +7,10 @@ import { PenSquare } from 'lucide-react';
 const stories = [
   {
     title: 'From Village School to University Scholar',
-    studentName: 'Maria K.',
+    studentName: 'Calvis O.',
     image: 'https://placehold.co/600x400',
     hint: 'student smiling graduation',
-    excerpt: 'Thanks to Caltech\'s sponsorship, Maria was able to complete her high school education and secure a scholarship to study computer science at a top university. She is now a role model in her community.',
+    excerpt: 'Thanks to Caltech\'s sponsorship, Calvis was able to complete his high school education and secure a scholarship to study computer science at a top university. He is now a role model in his community.',
   },
   {
     title: 'A Mentor\'s Guidance Lights the Way',

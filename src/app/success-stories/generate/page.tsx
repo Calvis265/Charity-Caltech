@@ -100,7 +100,7 @@ export default function GenerateSuccessStoryPage() {
                         <FormItem>
                           <FormLabel>Student's Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="e.g., Maria K." {...field} />
+                            <Input placeholder="e.g., Calvis O." {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -133,7 +133,7 @@ export default function GenerateSuccessStoryPage() {
                             />
                           </FormControl>
                            <FormDescription>
-                             Be specific. E.g., "Graduated top of her class and got a scholarship to university."
+                             Be specific. E.g., "Graduated top of his class and got a scholarship to university."
                            </FormDescription>
                           <FormMessage />
                         </FormItem>
