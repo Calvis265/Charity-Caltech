@@ -10,21 +10,25 @@ export default function DonatePage() {
       amount: '$25',
       impact: 'Provides school supplies for one student for a semester.',
       icon: <DollarSign className="size-8 text-primary" />,
+      link: 'https://paypal.me/your-paypal/25USD'
     },
     {
       amount: '$50',
       impact: 'Feeds a student for a month through our feeding program.',
       icon: <DollarSign className="size-8 text-primary" />,
+      link: 'https://paypal.me/your-paypal/50USD'
     },
     {
       amount: '$100',
       impact: 'Sponsors a portion of a student\'s annual tuition fees.',
       icon: <DollarSign className="size-8 text-primary" />,
+      link: 'https://paypal.me/your-paypal/100USD'
     },
     {
       amount: 'Custom',
       impact: 'Every dollar helps us empower more students. Choose your own amount.',
       icon: <Gift className="size-8 text-primary" />,
+      link: 'https://paypal.me/your-paypal'
     },
   ];
 
@@ -55,12 +59,19 @@ export default function DonatePage() {
                   <p className="text-muted-foreground">{tier.impact}</p>
                 </CardContent>
                 <CardFooter className="justify-center">
-                  <Button size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-                    <Heart className="mr-2 h-4 w-4" /> Donate {tier.amount !== 'Custom' && tier.amount}
+                   <Button asChild size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
+                    <Link href={tier.link} target="_blank" rel="noopener noreferrer">
+                      <Heart className="mr-2 h-4 w-4" /> Donate {tier.amount !== 'Custom' && tier.amount}
+                    </Link>
                   </Button>
                 </CardFooter>
               </Card>
             ))}
+          </div>
+           <div className="text-center mt-12">
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              You will be redirected to our secure payment partner to complete your donation.
+            </p>
           </div>
         </div>
       </section>
