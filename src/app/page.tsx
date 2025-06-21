@@ -77,10 +77,10 @@ export default function Home() {
     },
     {
       quote: "Volunteering as a mentor has been an incredibly rewarding experience. Seeing the impact on these young lives is priceless.",
-      name: 'John Smith',
+      name: 'Merceline Onyango',
       role: 'Volunteer Mentor',
       avatar: 'https://placehold.co/100x100',
-      hint: 'man portrait'
+      hint: 'woman portrait'
     },
   ];
 
