@@ -7,13 +7,13 @@ const founders = [
   { 
     name: 'Calvis Onyango', 
     role: 'Co-Founder & CEO', 
-    avatar: '/calvis.png', 
+    avatar: 'https://placehold.co/128x128.png', 
     description: 'Calvis is the visionary behind Caltech, driven by a lifelong passion for education and a belief in its power to transform lives. He leads the organization with a focus on strategic growth and impactful programs.'
   },
   { 
     name: 'Merceline Onyango', 
     role: 'Co-Founder & Director of Programs', 
-    avatar: '/merceline.png', 
+    avatar: 'https://placehold.co/128x128.png', 
     description: 'Merceline provides the operational backbone for Caltech. Her expertise in program management and community outreach ensures that our initiatives are effective, sustainable, and truly meet the needs of our students.'
   },
 ];
@@ -61,7 +61,6 @@ export default function AboutPage() {
                 alt="Founder talking to students"
                 fill
                 className="object-cover"
-                data-ai-hint="students classroom"
              />
           </div>
         </div>
@@ -112,7 +111,7 @@ export default function AboutPage() {
             {teamMembers.map((member) => (
               <Card key={member.name} className="text-center p-6 shadow-lg hover-glow">
                 <Avatar className="w-24 h-24 mx-auto mb-4">
-                  <AvatarImage src={member.avatar} alt={member.name} data-ai-hint="portrait" />
+                  <AvatarImage src={member.avatar} alt={member.name} />
                   <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                 </Avatar>
                 <h4 className="font-headline font-semibold text-lg">{member.name}</h4>
@@ -135,7 +134,6 @@ export default function AboutPage() {
                     width={150}
                     height={50}
                     className="object-contain"
-                    data-ai-hint="company logo"
                   />
               </div>
             ))}
