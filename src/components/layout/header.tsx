@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Heart, GraduationCap } from 'lucide-react';
+import { Menu, X, Heart, GraduationCap, LogIn } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
@@ -49,6 +49,12 @@ export function Header() {
                 <Heart className="mr-2 h-4 w-4" /> Donate
               </Link>
             </Button>
+            <Button asChild variant="outline" size="icon">
+                <Link href="/admin/login">
+                    <LogIn className="h-5 w-5" />
+                    <span className="sr-only">Admin Login</span>
+                </Link>
+            </Button>
           </div>
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
@@ -84,10 +90,15 @@ export function Header() {
                     </Link>
                   ))}
                 </nav>
-                 <div className="mt-auto pt-6">
+                 <div className="mt-auto pt-6 border-t">
                    <Button asChild size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
                     <Link href="/donate" onClick={() => setIsMobileMenuOpen(false)}>
                       <Heart className="mr-2 h-4 w-4" /> Donate Now
+                    </Link>
+                  </Button>
+                   <Button asChild variant="outline" size="lg" className="w-full mt-4">
+                    <Link href="/admin/login" onClick={() => setIsMobileMenuOpen(false)}>
+                      <LogIn className="mr-2 h-4 w-4" /> Admin Login
                     </Link>
                   </Button>
                  </div>
