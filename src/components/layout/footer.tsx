@@ -1,7 +1,16 @@
+'use client';
+
 import Link from 'next/link';
 import { Twitter, Facebook, Linkedin } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export function Footer() {
+  const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   const socialLinks = [
     { name: 'Twitter', icon: <Twitter className="h-5 w-5" />, href: '#' },
     { name: 'Facebook', icon: <Facebook className="h-5 w-5" />, href: '#' },
@@ -41,7 +50,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Caltech. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">&copy; {year} Caltech. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             {socialLinks.map((social) => (
               <a key={social.name} href={social.href} className="text-muted-foreground hover:text-primary" aria-label={social.name}>
