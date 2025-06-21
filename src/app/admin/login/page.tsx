@@ -71,8 +71,7 @@ export default function AdminLoginPage() {
     <div className="flex min-h-screen items-center justify-center bg-secondary/50 p-4 font-body">
       <div
         className={cn(
-          'relative h-[550px] w-full max-w-4xl overflow-hidden rounded-lg bg-card text-card-foreground shadow-2xl animated-glow-border',
-          'before:rounded-lg after:rounded-lg'
+          'relative h-[550px] w-full max-w-4xl overflow-hidden rounded-lg bg-card text-card-foreground shadow-2xl animated-glow-border'
         )}
         id="container"
       >
