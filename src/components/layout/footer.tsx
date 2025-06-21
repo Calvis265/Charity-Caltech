@@ -52,11 +52,12 @@ export function Footer() {
           </div>
           <div>
             <h4 className="font-semibold mb-4">Our Location</h4>
-            <div className="aspect-video w-full rounded-lg overflow-hidden border">
+            <div className="aspect-video w-full rounded-lg overflow-hidden shadow-lg">
                <iframe
-                src="https://maps.google.com/maps?q=123%20Education%20Lane,%20Knowledge%20City&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=123%20Education%20Lane,%20Knowledge%20City&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
+                className="grayscale hover:grayscale-0 transition-all duration-300"
                 style={{ border: 0 }}
                 allowFullScreen={false}
                 loading="lazy"
