@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Twitter, Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { Twitter, Facebook, Linkedin, Instagram, Youtube, GraduationCap } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export function Footer() {
@@ -26,7 +26,10 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-headline text-lg font-semibold mb-4">Caltech</h3>
+            <div className="flex items-center space-x-2 mb-4">
+              <GraduationCap className="h-7 w-7 text-primary" />
+              <span className="font-headline text-lg font-semibold">Caltech</span>
+            </div>
             <p className="text-sm text-muted-foreground mb-4">Empowering Futures, One Student at a Time.</p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
