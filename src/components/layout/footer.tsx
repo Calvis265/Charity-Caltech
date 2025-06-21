@@ -77,7 +77,6 @@ export function Footer() {
                   src="https://maps.google.com/maps?q=Kibera%2C%20Nairobi%2C%20Kenya&z=13&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
-                  className="grayscale hover:grayscale-0 transition-all duration-300"
                   style={{ border: 0 }}
                   allowFullScreen={false}
                   loading="lazy"
