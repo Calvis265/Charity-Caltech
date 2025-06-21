@@ -1,4 +1,3 @@
-
 "use server";
 
 import { z } from "zod";
@@ -7,7 +6,7 @@ import { z } from "zod";
 const phoneRegex = /^(07|2547)\d{8}$/;
 
 const donationSchema = z.object({
-  amount: z.number().min(1, { message: "Amount must be greater than 0." }),
+  amount: z.number().min(10, { message: "Amount must be at least KES 10." }),
   phone: z.string().regex(phoneRegex, { message: "Please enter a valid Kenyan M-Pesa number." }),
 });
 
@@ -31,25 +30,29 @@ export async function initiateMpesaPaymentAction(
   console.log(`Initiating M-Pesa payment for KES ${amount} to ${phone}`);
 
   // ========================================================================
-  // TODO: M-PESA API INTEGRATION (PLACEHOLDER)
+  // M-PESA API INTEGRATION (PLACEHOLDER)
   // ========================================================================
   // This is where you would call the M-Pesa Daraja API to initiate an STK Push.
   // You will need to get your credentials (Consumer Key, Consumer Secret, Passkey)
   // from the Safaricom Developer Portal and store them securely as environment variables.
   //
+  // All funds will be sent to the M-Pesa account associated with your Short Code.
+  //
   // Example steps:
   // 1. Get an access token from the M-Pesa API.
   // 2. Make a POST request to the STK Push endpoint with the transaction details.
-  //    - BusinessShortCode: Your PayBill number
+  //    - BusinessShortCode: Your PayBill or Till number (e.g., 174379)
   //    - Amount: `amount`
-  //    - PartyA: `phone` (the customer's number)
-  //    - PartyB: Your PayBill number
-  //    - PhoneNumber: `phone`
+  //    - PartyA: `phone` (the customer's number, e.g., 2547XXXXXXXX)
+  //    - PartyB: Your PayBill or Till number again. For PayBill, this is the same as BusinessShortCode.
+  //    - PhoneNumber: `phone` (the customer's number, e.g., 2547XXXXXXXX)
   //    - CallBackURL: A public URL endpoint you create to receive transaction status updates.
   //    - AccountReference: A reference for the transaction (e.g., "CaltechDonation")
-  //    - TransactionDesc: A short description
+  //    - TransactionDesc: A short description (e.g., "Donation to Caltech")
   //
-  // For now, we will just simulate a successful API call.
+  // NOTE: The number 0757056917 you provided is a personal number. For STK Push,
+  // you typically need a business PayBill or Till Number. If you intend to use a personal
+  // number, you might need a different M-Pesa API product or setup.
   // ========================================================================
 
   // Simulate network delay for API call

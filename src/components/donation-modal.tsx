@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -32,16 +31,15 @@ interface DonationModalProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   amount: number;
-  isCustom: boolean;
 }
 
 const phoneRegex = /^(07|2547)\d{8}$/;
 const formSchema = z.object({
-  amount: z.number().min(1, "Amount must be at least $1."),
+  amount: z.number().min(10, "Amount must be at least KES 10."),
   phone: z.string().regex(phoneRegex, "Please enter a valid M-Pesa number (e.g., 0712345678)."),
 });
 
-export function DonationModal({ isOpen, onOpenChange, amount, isCustom }: DonationModalProps) {
+export function DonationModal({ isOpen, onOpenChange, amount }: DonationModalProps) {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -56,6 +54,9 @@ export function DonationModal({ isOpen, onOpenChange, amount, isCustom }: Donati
   // Update form's amount when the prop changes
   React.useEffect(() => {
     form.setValue('amount', amount);
+    if (amount > 0) {
+      form.clearErrors('amount');
+    }
   }, [amount, form]);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -85,7 +86,7 @@ export function DonationModal({ isOpen, onOpenChange, amount, isCustom }: Donati
         <DialogHeader>
           <DialogTitle className="font-headline">Donate via M-Pesa</DialogTitle>
           <DialogDescription>
-            Complete your donation securely. A prompt will be sent to your phone to confirm the payment.
+            Enter your details below. A prompt will be sent to your phone to complete the payment.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -95,14 +96,13 @@ export function DonationModal({ isOpen, onOpenChange, amount, isCustom }: Donati
               name="amount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Donation Amount (USD)</FormLabel>
+                  <FormLabel>Donation Amount (KES)</FormLabel>
                   <FormControl>
                     <Input 
                       type="number"
                       placeholder="Enter amount"
                       {...field}
                       onChange={event => field.onChange(+event.target.value)}
-                      readOnly={!isCustom}
                     />
                   </FormControl>
                   <FormMessage />
@@ -114,7 +114,7 @@ export function DonationModal({ isOpen, onOpenChange, amount, isCustom }: Donati
               name="phone"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>M-Pesa Phone Number</FormLabel>
+                  <FormLabel>Your M-Pesa Phone Number</FormLabel>
                   <FormControl>
                     <div className="relative">
                        <Smartphone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -126,11 +126,11 @@ export function DonationModal({ isOpen, onOpenChange, amount, isCustom }: Donati
               )}
             />
             <DialogFooter>
-              <Button type="submit" className="w-full" disabled={isLoading}>
+              <Button type="submit" className="w-full" disabled={isLoading || form.watch('amount') < 10}>
                 {isLoading ? (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                 ) : null}
-                Donate ${form.watch('amount') || 0}
+                Donate KES {form.watch('amount') || 0}
               </Button>
             </DialogFooter>
           </form>

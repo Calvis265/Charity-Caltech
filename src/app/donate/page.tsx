@@ -1,10 +1,9 @@
-
 "use client";
 
 import * as React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { DollarSign, Gift, Heart } from 'lucide-react';
+import { Handshake, Gift, Heart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ContactForm } from '@/components/contact-form';
@@ -13,38 +12,35 @@ import { DonationModal } from '@/components/donation-modal';
 export default function DonatePage() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const [selectedAmount, setSelectedAmount] = React.useState(0);
-  const [isCustom, setIsCustom] = React.useState(false);
 
   const handleDonateClick = (amount: number | string) => {
     if (amount === 'Custom') {
-      setSelectedAmount(0);
-      setIsCustom(true);
+      setSelectedAmount(0); // Start with 0 for custom to force user input
     } else {
       setSelectedAmount(Number(amount));
-      setIsCustom(false);
     }
     setIsModalOpen(true);
   };
 
   const donationTiers = [
     {
-      amount: '25',
+      amount: '1000',
       impact: 'Provides school supplies for one student for a semester.',
-      icon: <DollarSign className="size-8 text-primary" />,
+      icon: <Handshake className="size-8 text-primary" />,
     },
     {
-      amount: '50',
+      amount: '2500',
       impact: 'Feeds a student for a month through our feeding program.',
-      icon: <DollarSign className="size-8 text-primary" />,
+      icon: <Handshake className="size-8 text-primary" />,
     },
     {
-      amount: '100',
+      amount: '5000',
       impact: 'Sponsors a portion of a student\'s annual tuition fees.',
-      icon: <DollarSign className="size-8 text-primary" />,
+      icon: <Handshake className="size-8 text-primary" />,
     },
     {
       amount: 'Custom',
-      impact: 'Every dollar helps us empower more students. Choose your own amount.',
+      impact: 'Every shilling helps us empower more students. Choose your own amount.',
       icon: <Gift className="size-8 text-primary" />,
     },
   ];
@@ -55,7 +51,6 @@ export default function DonatePage() {
         isOpen={isModalOpen}
         onOpenChange={setIsModalOpen}
         amount={selectedAmount}
-        isCustom={isCustom}
       />
       <section className="bg-primary/10 py-20 md:py-32">
         <div className="container mx-auto px-4 text-center">
@@ -76,7 +71,7 @@ export default function DonatePage() {
                   <div className="mx-auto p-4 bg-primary/10 rounded-full mb-4">
                     {tier.icon}
                   </div>
-                  <CardTitle className="font-headline text-3xl">{tier.amount !== 'Custom' ? `$${tier.amount}`: 'Custom'}</CardTitle>
+                  <CardTitle className="font-headline text-3xl">{tier.amount !== 'Custom' ? `KES ${tier.amount}`: 'Custom'}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <p className="text-muted-foreground">{tier.impact}</p>
@@ -87,7 +82,7 @@ export default function DonatePage() {
                     className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
                     onClick={() => handleDonateClick(tier.amount)}
                   >
-                    <Heart className="mr-2 h-4 w-4" /> Donate {tier.amount !== 'Custom' && `$${tier.amount}`}
+                    <Heart className="mr-2 h-4 w-4" /> Donate {tier.amount !== 'Custom' && `KES ${tier.amount}`}
                   </Button>
                 </CardFooter>
               </Card>
@@ -117,7 +112,7 @@ export default function DonatePage() {
               Financial contributions are the lifeblood of our organization. They allow us to fund our core programs, from providing scholarships and daily meals to running mentorship and tech training sessions. Your support directly translates into tangible outcomes for our students.
             </p>
             <p className="text-muted-foreground">
-              We are committed to transparency and efficiency. Over 90% of every dollar donated goes directly to program services.
+              We are committed to transparency and efficiency. Over 90% of every shilling donated goes directly to program services.
             </p>
             <Button asChild className="mt-6">
               <Link href="/about">Learn More About Our Work</Link>
