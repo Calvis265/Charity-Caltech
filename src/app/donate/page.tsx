@@ -3,6 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { DollarSign, Gift, Heart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ContactForm } from '@/components/contact-form';
 
 export default function DonatePage() {
   const donationTiers = [
@@ -48,7 +49,7 @@ export default function DonatePage() {
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-center mb-12">Choose Your Impact</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {donationTiers.map((tier) => (
-              <Card key={tier.amount} className="text-center flex flex-col shadow-lg hover-glow">
+              <Card key={tier.amount} className="text-center flex flex-col hover-glow">
                 <CardHeader>
                   <div className="mx-auto p-4 bg-primary/10 rounded-full mb-4">
                     {tier.icon}
@@ -103,14 +104,16 @@ export default function DonatePage() {
       </section>
 
        <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-headline font-semibold">Other Ways to Give</h2>
-          <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
-            Interested in corporate partnerships, in-kind donations, or planned giving? We'd love to discuss how you can support our mission.
-          </p>
-          <Button asChild size="lg" className="mt-6 bg-accent hover:bg-accent/90 text-accent-foreground">
-            <Link href="/contact">Contact Us</Link>
-          </Button>
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl font-headline font-semibold">Other Ways to Give</h2>
+            <p className="mt-2 text-muted-foreground">
+              Interested in corporate partnerships, in-kind donations, or planned giving? We'd love to discuss how you can support our mission. Please send us a message below.
+            </p>
+          </div>
+          <div className="mt-8 max-w-3xl mx-auto">
+            <ContactForm />
+          </div>
         </div>
       </section>
     </div>
