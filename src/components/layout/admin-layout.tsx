@@ -5,7 +5,6 @@ import {
   Bell,
   CircleUser,
   Home,
-  Menu,
   Users,
   DollarSign,
   Newspaper
@@ -38,9 +37,9 @@ export function AdminLayoutContent({ children }: { children: React.ReactNode }) 
   const navLinks = [
     { href: '/admin/dashboard', label: 'Dashboard', icon: Home },
     { href: '/success-stories/generate', label: 'Story Generator', icon: Newspaper },
+    { href: '/admin/volunteers', label: 'Volunteers', icon: Users },
     // These are placeholder links for now
     { href: '#', label: 'Donations', icon: DollarSign, badge: 6 },
-    { href: '#', label: 'Volunteers', icon: Users },
   ];
 
   return (
@@ -65,7 +64,7 @@ export function AdminLayoutContent({ children }: { children: React.ReactNode }) 
                   href={link.href}
                   className={cn(
                     'flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary',
-                    pathname === link.href && 'bg-muted text-primary'
+                    pathname.startsWith(link.href) && link.href !== '#' && 'bg-muted text-primary'
                   )}
                 >
                   <link.icon className="h-4 w-4" />
@@ -124,7 +123,7 @@ export function AdminLayoutContent({ children }: { children: React.ReactNode }) 
                       href={link.href}
                       className={cn(
                         'flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground',
-                        pathname === link.href && 'bg-muted text-foreground'
+                        pathname.startsWith(link.href) && link.href !== '#' && 'bg-muted text-foreground'
                       )}
                     >
                       <link.icon className="h-5 w-5" />

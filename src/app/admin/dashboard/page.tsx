@@ -30,6 +30,39 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
+const recentVolunteers = [
+    {
+      name: 'Olivia Martin',
+      email: 'olivia.martin@email.com',
+      role: 'Mentor',
+      avatar: 'https://placehold.co/100x100'
+    },
+    {
+      name: 'Jackson Lee',
+      email: 'jackson.lee@email.com',
+      role: 'Event Staff',
+      avatar: 'https://placehold.co/100x100'
+    },
+    {
+      name: 'Isabella Nguyen',
+      email: 'isabella.nguyen@email.com',
+      role: 'Tutor',
+      avatar: 'https://placehold.co/100x100'
+    },
+    {
+      name: 'William Kim',
+      email: 'will@email.com',
+      role: 'Mentor',
+      avatar: 'https://placehold.co/100x100'
+    },
+    {
+      name: 'Sofia Davis',
+      email: 'sofia.davis@email.com',
+      role: 'Admin Help',
+      avatar: 'https://placehold.co/100x100'
+    }
+]
+
 export default function AdminDashboardPage() {
   return (
     <>
@@ -232,83 +265,30 @@ export default function AdminDashboardPage() {
               New volunteers who signed up this month.
             </CardDescription>
           </CardHeader>
-          <CardContent className="grid gap-8">
-            <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
-                <AvatarImage src="https://placehold.co/100x100" alt="Avatar" />
-                <AvatarFallback>OM</AvatarFallback>
-              </Avatar>
-              <div className="grid gap-1">
-                <p className="text-sm font-medium leading-none">
-                  Olivia Martin
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  olivia.martin@email.com
-                </p>
-              </div>
-              <div className="ml-auto font-medium"><Badge variant="secondary">Mentor</Badge></div>
-            </div>
-            <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
-                <AvatarImage src="https://placehold.co/100x100" alt="Avatar" />
-                <AvatarFallback>JL</AvatarFallback>
-              </Avatar>
-              <div className="grid gap-1">
-                <p className="text-sm font-medium leading-none">
-                  Jackson Lee
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  jackson.lee@email.com
-                </p>
-              </div>
-              <div className="ml-auto font-medium"><Badge variant="secondary">Event Staff</Badge></div>
-            </div>
-            <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
-                <AvatarImage src="https://placehold.co/100x100" alt="Avatar" />
-                <AvatarFallback>IN</AvatarFallback>
-              </Avatar>
-              <div className="grid gap-1">
-                <p className="text-sm font-medium leading-none">
-                  Isabella Nguyen
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  isabella.nguyen@email.com
-                </p>
-              </div>
-              <div className="ml-auto font-medium"><Badge variant="secondary">Tutor</Badge></div>
-            </div>
-            <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
-                <AvatarImage src="https://placehold.co/100x100" alt="Avatar" />
-                <AvatarFallback>WK</AvatarFallback>
-              </Avatar>
-              <div className="grid gap-1">
-                <p className="text-sm font-medium leading-none">
-                  William Kim
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  will@email.com
-                </p>
-              </div>
-              <div className="ml-auto font-medium"><Badge variant="secondary">Mentor</Badge></div>
-            </div>
-            <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
-                <AvatarImage src="https://placehold.co/100x100" alt="Avatar" />
-                <AvatarFallback>SD</AvatarFallback>
-              </Avatar>
-              <div className="grid gap-1">
-                <p className="text-sm font-medium leading-none">
-                  Sofia Davis
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  sofia.davis@email.com
-                </p>
-              </div>
-              <div className="ml-auto font-medium"><Badge variant="secondary">Admin Help</Badge></div>
-            </div>
+          <CardContent className="grid gap-6">
+            {recentVolunteers.map((volunteer) => (
+                <div key={volunteer.email} className="flex items-center gap-4">
+                <Avatar className="hidden h-9 w-9 sm:flex">
+                    <AvatarImage src={volunteer.avatar} alt="Avatar" />
+                    <AvatarFallback>{volunteer.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                </Avatar>
+                <div className="grid gap-1">
+                    <p className="text-sm font-medium leading-none">
+                    {volunteer.name}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                    {volunteer.email}
+                    </p>
+                </div>
+                <div className="ml-auto font-medium"><Badge variant="secondary">{volunteer.role}</Badge></div>
+                </div>
+            ))}
           </CardContent>
+           <CardContent>
+             <Button size="sm" className="w-full" asChild>
+                <Link href="/admin/volunteers">Manage Volunteers</Link>
+             </Button>
+           </CardContent>
         </Card>
       </div>
     </>
