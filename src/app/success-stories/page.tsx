@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
@@ -55,7 +56,7 @@ export default function SuccessStoriesPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {stories.map((story) => (
-              <Card key={story.title} className="flex flex-col overflow-hidden shadow-lg hover-glow">
+              <Card key={story.title} className="flex flex-col overflow-hidden shadow-lg hover:scale-105 hover:-translate-y-1 transition-transform duration-300">
                 <CardHeader className="p-0">
                   <div className="relative h-48 w-full">
                     <Image
@@ -71,12 +72,9 @@ export default function SuccessStoriesPage() {
                     <p className="text-sm text-primary font-medium mt-1">{story.studentName}</p>
                   </div>
                 </CardHeader>
-                <CardContent className="flex-grow px-6">
+                <CardContent className="flex-grow p-6 pt-0">
                   <p className="text-muted-foreground">{story.excerpt}</p>
                 </CardContent>
-                <CardFooter className="px-6 pb-6">
-                  <Button variant="link" className="p-0 h-auto">Read More</Button>
-                </CardFooter>
               </Card>
             ))}
           </div>

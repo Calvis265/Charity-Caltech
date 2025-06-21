@@ -1,3 +1,4 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { DollarSign, Gift, Heart } from 'lucide-react';
@@ -11,25 +12,25 @@ export default function DonatePage() {
       amount: '$25',
       impact: 'Provides school supplies for one student for a semester.',
       icon: <DollarSign className="size-8 text-primary" />,
-      link: 'https://paypal.me/your-paypal/25USD'
+      link: 'mailto:calvisonyango265@gmail.com?subject=Donation%20of%20%2425'
     },
     {
       amount: '$50',
       impact: 'Feeds a student for a month through our feeding program.',
       icon: <DollarSign className="size-8 text-primary" />,
-      link: 'https://paypal.me/your-paypal/50USD'
+      link: 'mailto:calvisonyango265@gmail.com?subject=Donation%20of%20%2450'
     },
     {
       amount: '$100',
       impact: 'Sponsors a portion of a student\'s annual tuition fees.',
       icon: <DollarSign className="size-8 text-primary" />,
-      link: 'https://paypal.me/your-paypal/100USD'
+      link: 'mailto:calvisonyango265@gmail.com?subject=Donation%20of%20%24100'
     },
     {
       amount: 'Custom',
       impact: 'Every dollar helps us empower more students. Choose your own amount.',
       icon: <Gift className="size-8 text-primary" />,
-      link: 'https://paypal.me/your-paypal'
+      link: 'mailto:calvisonyango265@gmail.com?subject=Custom%20Donation'
     },
   ];
 
@@ -49,7 +50,7 @@ export default function DonatePage() {
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-center mb-12">Choose Your Impact</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {donationTiers.map((tier) => (
-              <Card key={tier.amount} className="text-center flex flex-col hover-glow">
+              <Card key={tier.amount} className="text-center flex flex-col hover:scale-105 hover:-translate-y-1 transition-transform duration-300">
                 <CardHeader>
                   <div className="mx-auto p-4 bg-primary/10 rounded-full mb-4">
                     {tier.icon}
@@ -61,9 +62,9 @@ export default function DonatePage() {
                 </CardContent>
                 <CardFooter className="justify-center">
                    <Button asChild size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-                    <Link href={tier.link} target="_blank" rel="noopener noreferrer">
+                    <a href={tier.link} target="_blank" rel="noopener noreferrer">
                       <Heart className="mr-2 h-4 w-4" /> Donate {tier.amount !== 'Custom' && tier.amount}
-                    </Link>
+                    </a>
                   </Button>
                 </CardFooter>
               </Card>
@@ -71,7 +72,7 @@ export default function DonatePage() {
           </div>
            <div className="text-center mt-12">
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              You will be redirected to our secure payment partner to complete your donation.
+              You will be redirected to your email client to complete your donation inquiry.
             </p>
           </div>
         </div>

@@ -3,14 +3,69 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { GraduationCap } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { GraduationCap, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { loginAction, signUpAction } from './actions';
 
 export default function AdminLoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [isSigningUp, setIsSigningUp] = useState(false);
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSigningIn(true);
+    const formData = new FormData(event.currentTarget);
+    const values = Object.fromEntries(formData.entries());
+
+    const result = await loginAction(values);
+
+    if (result.success) {
+      toast({
+        title: 'Login Successful',
+        description: 'Redirecting to dashboard...',
+      });
+      router.push('/admin/dashboard');
+    } else {
+      toast({
+        variant: 'destructive',
+        title: 'Login Failed',
+        description: result.message,
+      });
+      setIsSigningIn(false);
+    }
+  };
+
+  const handleSignUp = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSigningUp(true);
+    const formData = new FormData(event.currentTarget);
+    const values = Object.fromEntries(formData.entries());
+    
+    const result = await signUpAction(values);
+
+    if (result.success) {
+      toast({
+        title: 'Sign-Up Successful',
+        description: 'Please sign in with your new account.',
+      });
+      setIsSignUp(false);
+    } else {
+      toast({
+        variant: 'destructive',
+        title: 'Sign-Up Failed',
+        description: result.message,
+      });
+    }
+    setIsSigningUp(false);
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-secondary/50 p-4 font-body">
@@ -28,7 +83,7 @@ export default function AdminLoginPage() {
             { 'translate-x-full opacity-100 z-[5]': isSignUp }
           )}
         >
-          <form className="bg-card h-full flex justify-center items-center flex-col px-12 text-center">
+          <form onSubmit={handleSignUp} className="bg-card h-full flex justify-center items-center flex-col px-12 text-center">
              <Link href="/" className="mb-6 flex w-fit items-center space-x-2">
                 <GraduationCap className="h-8 w-8 text-primary" />
                 <span className="font-headline text-2xl font-bold text-primary">Caltech</span>
@@ -37,18 +92,19 @@ export default function AdminLoginPage() {
             <div className="grid gap-4 w-full">
               <div className="grid gap-2 text-left">
                   <Label htmlFor="name">Name</Label>
-                  <Input id="name" type="text" placeholder="Calvis Onyango" required />
+                  <Input id="name" name="name" type="text" placeholder="Calvis Onyango" required />
               </div>
               <div className="grid gap-2 text-left">
                  <Label htmlFor="signup-email">Email</Label>
-                 <Input id="signup-email" type="email" placeholder="calvis@admin.com" required />
+                 <Input id="signup-email" name="email" type="email" placeholder="calvis@admin.com" required />
               </div>
               <div className="grid gap-2 text-left">
                 <Label htmlFor="signup-password">Password</Label>
-                <Input id="signup-password" type="password" required />
+                <Input id="signup-password" name="password" type="password" required />
               </div>
             </div>
-            <Button className="mt-6 rounded-full px-12 py-3 text-sm font-bold uppercase tracking-wider transition-transform duration-75 ease-in active:scale-95">
+            <Button type="submit" disabled={isSigningUp} className="mt-6 rounded-full px-12 py-3 text-sm font-bold uppercase tracking-wider transition-transform duration-75 ease-in active:scale-95">
+              {isSigningUp && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Sign Up
             </Button>
           </form>
@@ -61,7 +117,7 @@ export default function AdminLoginPage() {
             { 'translate-x-full': isSignUp }
           )}
         >
-          <form className="bg-card h-full flex justify-center items-center flex-col px-12 text-center">
+          <form onSubmit={handleSignIn} className="bg-card h-full flex justify-center items-center flex-col px-12 text-center">
              <Link href="/" className="mb-6 flex w-fit items-center space-x-2">
                 <GraduationCap className="h-8 w-8 text-primary" />
                 <span className="font-headline text-2xl font-bold text-primary">Caltech</span>
@@ -70,11 +126,11 @@ export default function AdminLoginPage() {
             <div className="grid gap-4 w-full">
                 <div className="grid gap-2 text-left">
                     <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" placeholder="calvis@admin.com" required />
+                    <Input id="email" name="email" type="email" placeholder="calvis@admin.com" required />
                 </div>
                 <div className="grid gap-2 text-left">
                     <Label htmlFor="password">Password</Label>
-                    <Input id="password" type="password" required />
+                    <Input id="password" name="password" type="password" required />
                 </div>
             </div>
             <Link
@@ -83,8 +139,9 @@ export default function AdminLoginPage() {
             >
               Forgot your password?
             </Link>
-            <Button className="rounded-full px-12 py-3 text-sm font-bold uppercase tracking-wider transition-transform duration-75 ease-in active:scale-95">
-              Sign In
+            <Button type="submit" disabled={isSigningIn} className="rounded-full px-12 py-3 text-sm font-bold uppercase tracking-wider transition-transform duration-75 ease-in active:scale-95">
+               {isSigningIn && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+               Sign In
             </Button>
           </form>
         </div>
