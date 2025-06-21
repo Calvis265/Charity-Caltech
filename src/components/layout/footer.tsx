@@ -18,11 +18,9 @@ const WhatsappIcon = () => (
   );
 
 export function Footer() {
-  const [year, setYear] = useState<number | null>(null);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setYear(new Date().getFullYear());
     setIsMounted(true);
   }, []);
 
@@ -93,7 +91,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 border-t pt-8 text-center">
-          <p className="text-sm text-muted-foreground">&copy; {year} Caltech. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Caltech. All rights reserved.</p>
         </div>
       </div>
     </footer>
