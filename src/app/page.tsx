@@ -9,8 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { BookOpen, Utensils, Users, Laptop, Feather, HeartHandshake, Mail, Phone } from 'lucide-react';
-import { ContactForm } from '@/components/contact-form';
+import { BookOpen, Utensils, Users, Laptop, HeartHandshake } from 'lucide-react';
 
 export default function Home() {
   const plugin = React.useRef(
@@ -213,47 +212,6 @@ export default function Home() {
              <Button asChild size="lg" variant="outline">
               <Link href="/success-stories">Read Success Stories</Link>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Us Section */}
-      <section className="py-16 md:py-24 bg-secondary/50">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-3xl font-headline font-semibold mb-4">Send Us a Message</h2>
-                <p className="text-muted-foreground">
-                  Have questions, suggestions, or want to get involved? Fill out the form, and our team will get back to you as soon as possible. We'd love to hear from you!
-                </p>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold">Email Us Directly</h3>
-                  <a href="mailto:calvisonyango265@gmail.com" className="text-muted-foreground hover:text-primary">
-                    calvisonyango265@gmail.com
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-semibold">Call Our Office</h3>
-                  <a href="tel:+254757056917" className="text-muted-foreground hover:text-primary">
-                    +254 757 056 917
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div>
-              <ContactForm />
-            </div>
           </div>
         </div>
       </section>
