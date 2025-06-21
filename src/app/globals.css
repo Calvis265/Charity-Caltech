@@ -57,10 +57,6 @@
     --chart-5: 345 85% 60%;
   }
 
-  html {
-    @apply scroll-smooth;
-  }
-
   * {
     @apply border-border;
   }

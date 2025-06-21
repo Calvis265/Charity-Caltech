@@ -56,17 +56,17 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><Link href="/#about" className="text-sm text-muted-foreground hover:text-primary">About Us</Link></li>
-              <li><Link href="/#programs" className="text-sm text-muted-foreground hover:text-primary">Programs</Link></li>
+              <li><Link href="/about" className="text-sm text-muted-foreground hover:text-primary">About Us</Link></li>
+              <li><Link href="/programs" className="text-sm text-muted-foreground hover:text-primary">Programs</Link></li>
               <li><Link href="/donate" className="text-sm text-muted-foreground hover:text-primary">Donate</Link></li>
-              <li><Link href="/#contact" className="text-sm text-muted-foreground hover:text-primary">Contact</Link></li>
+              <li><Link href="/contact" className="text-sm text-muted-foreground hover:text-primary">Contact</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold mb-4">Get Involved</h4>
             <ul className="space-y-2">
-              <li><Link href="/#get-involved" className="text-sm text-muted-foreground hover:text-primary">Volunteer</Link></li>
-              <li><Link href="/#get-involved" className="text-sm text-muted-foreground hover:text-primary">Mentor</Link></li>
+              <li><Link href="/get-involved" className="text-sm text-muted-foreground hover:text-primary">Volunteer</Link></li>
+              <li><Link href="/get-involved" className="text-sm text-muted-foreground hover:text-primary">Mentor</Link></li>
             </ul>
           </div>
           <div>

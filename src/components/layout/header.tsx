@@ -10,18 +10,16 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/#about', label: 'About Us' },
-  { href: '/#programs', label: 'Programs' },
-  { href: '/#get-involved', label: 'Get Involved' },
+  { href: '/about', label: 'About Us' },
+  { href: '/programs', label: 'Programs' },
+  { href: '/get-involved', label: 'Get Involved' },
   { href: '/success-stories', label: 'Success Stories' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  const isHomePage = pathname === '/';
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -32,22 +30,18 @@ export function Header() {
         </Link>
         <div className="flex flex-1 items-center justify-end space-x-2">
           <nav className="hidden md:flex gap-6">
-            {navLinks.map((link) => {
-              const isActive = isHomePage && pathname === new URL(link.href, 'http://a').pathname
-
-              return (
-                 <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    'text-sm font-medium transition-colors hover:text-primary',
-                    isActive ? 'text-primary' : 'text-muted-foreground'
-                  )}
-                >
-                  {link.label}
-                </Link>
-              )
-            })}
+            {navLinks.map((link) => (
+               <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  'text-sm font-medium transition-colors hover:text-primary',
+                  pathname === link.href ? 'text-primary' : 'text-muted-foreground'
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
           <div className="hidden md:flex items-center gap-2 ml-4">
              <Button asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
@@ -88,7 +82,7 @@ export function Header() {
                       href={link.href}
                       className={cn(
                         'text-lg font-medium transition-colors hover:text-primary',
-                         'text-foreground'
+                         pathname === link.href ? 'text-primary' : 'text-foreground'
                       )}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
