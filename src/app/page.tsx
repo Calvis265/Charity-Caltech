@@ -22,7 +22,7 @@ export default function Home() {
       imageHint: "children learning",
       alt: "Children learning in a classroom",
       title: "Empowering Futures, One Student at a Time",
-      subtitle: "We are dedicated to providing needy and vulnerable students with access to quality education, mentorship, and support.",
+      subtitle: "Providing access to quality education, mentorship, and support for students in need.",
     },
     {
       imageSrc: "https://placehold.co/1600x900",
@@ -125,8 +125,8 @@ export default function Home() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex bg-background/50 hover:bg-background/80 border-none text-white" />
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex bg-background/50 hover:bg-background/80 border-none text-white" />
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex bg-primary/80 hover:bg-primary border-none text-primary-foreground" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex bg-primary/80 hover:bg-primary border-none text-primary-foreground" />
         </Carousel>
       </section>
 
