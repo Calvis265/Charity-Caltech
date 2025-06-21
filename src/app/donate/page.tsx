@@ -1,41 +1,62 @@
 
+"use client";
+
+import * as React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { DollarSign, Gift, Heart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ContactForm } from '@/components/contact-form';
+import { DonationModal } from '@/components/donation-modal';
 
 export default function DonatePage() {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const [selectedAmount, setSelectedAmount] = React.useState(0);
+  const [isCustom, setIsCustom] = React.useState(false);
+
+  const handleDonateClick = (amount: number | string) => {
+    if (amount === 'Custom') {
+      setSelectedAmount(0);
+      setIsCustom(true);
+    } else {
+      setSelectedAmount(Number(amount));
+      setIsCustom(false);
+    }
+    setIsModalOpen(true);
+  };
+
   const donationTiers = [
     {
-      amount: '$25',
+      amount: '25',
       impact: 'Provides school supplies for one student for a semester.',
       icon: <DollarSign className="size-8 text-primary" />,
-      link: 'mailto:calvisonyango265@gmail.com?subject=Donation%20of%20%2425'
     },
     {
-      amount: '$50',
+      amount: '50',
       impact: 'Feeds a student for a month through our feeding program.',
       icon: <DollarSign className="size-8 text-primary" />,
-      link: 'mailto:calvisonyango265@gmail.com?subject=Donation%20of%20%2450'
     },
     {
-      amount: '$100',
+      amount: '100',
       impact: 'Sponsors a portion of a student\'s annual tuition fees.',
       icon: <DollarSign className="size-8 text-primary" />,
-      link: 'mailto:calvisonyango265@gmail.com?subject=Donation%20of%20%24100'
     },
     {
       amount: 'Custom',
       impact: 'Every dollar helps us empower more students. Choose your own amount.',
       icon: <Gift className="size-8 text-primary" />,
-      link: 'mailto:calvisonyango265@gmail.com?subject=Custom%20Donation'
     },
   ];
 
   return (
     <div>
+      <DonationModal
+        isOpen={isModalOpen}
+        onOpenChange={setIsModalOpen}
+        amount={selectedAmount}
+        isCustom={isCustom}
+      />
       <section className="bg-primary/10 py-20 md:py-32">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-headline font-bold">Support Our Cause</h1>
@@ -55,24 +76,26 @@ export default function DonatePage() {
                   <div className="mx-auto p-4 bg-primary/10 rounded-full mb-4">
                     {tier.icon}
                   </div>
-                  <CardTitle className="font-headline text-3xl">{tier.amount}</CardTitle>
+                  <CardTitle className="font-headline text-3xl">{tier.amount !== 'Custom' ? `$${tier.amount}`: 'Custom'}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <p className="text-muted-foreground">{tier.impact}</p>
                 </CardContent>
                 <CardFooter className="justify-center">
-                   <Button asChild size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-                    <a href={tier.link} target="_blank" rel="noopener noreferrer">
-                      <Heart className="mr-2 h-4 w-4" /> Donate {tier.amount !== 'Custom' && tier.amount}
-                    </a>
+                  <Button
+                    size="lg"
+                    className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+                    onClick={() => handleDonateClick(tier.amount)}
+                  >
+                    <Heart className="mr-2 h-4 w-4" /> Donate {tier.amount !== 'Custom' && `$${tier.amount}`}
                   </Button>
                 </CardFooter>
               </Card>
             ))}
           </div>
-           <div className="text-center mt-12">
+          <div className="text-center mt-12">
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              You will be redirected to your email client to complete your donation inquiry.
+              You can donate securely via M-Pesa. Click a donation amount to start.
             </p>
           </div>
         </div>
@@ -81,12 +104,12 @@ export default function DonatePage() {
       <section className="py-16 md:py-24 bg-secondary/50">
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           <div className="relative h-96 rounded-lg overflow-hidden shadow-xl">
-             <Image 
-                src="https://placehold.co/600x450" 
-                alt="Happy student receiving support"
-                fill
-                className="object-cover"
-             />
+            <Image
+              src="https://placehold.co/600x450"
+              alt="Happy student receiving support"
+              fill
+              className="object-cover"
+            />
           </div>
           <div>
             <h2 className="text-3xl font-headline font-semibold mb-4">Your Donation in Action</h2>
@@ -97,13 +120,13 @@ export default function DonatePage() {
               We are committed to transparency and efficiency. Over 90% of every dollar donated goes directly to program services.
             </p>
             <Button asChild className="mt-6">
-                <Link href="/about">Learn More About Our Work</Link>
+              <Link href="/about">Learn More About Our Work</Link>
             </Button>
           </div>
         </div>
       </section>
 
-       <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl font-headline font-semibold">Other Ways to Give</h2>
