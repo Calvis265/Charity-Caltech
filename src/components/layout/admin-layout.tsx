@@ -5,6 +5,7 @@ import {
   Bell,
   CircleUser,
   Home,
+  Menu,
   Users,
   DollarSign,
   Newspaper
