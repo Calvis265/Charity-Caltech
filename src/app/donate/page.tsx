@@ -108,7 +108,7 @@ export default function DonatePage() {
           <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
             Interested in corporate partnerships, in-kind donations, or planned giving? We'd love to discuss how you can support our mission.
           </p>
-          <Button asChild variant="outline" size="lg" className="mt-6">
+          <Button asChild size="lg" className="mt-6 bg-accent hover:bg-accent/90 text-accent-foreground">
             <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
