@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -19,6 +20,7 @@ const WhatsappIcon = () => (
 
 export function Footer() {
   const [isMounted, setIsMounted] = useState(false);
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     setIsMounted(true);
@@ -91,7 +93,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 border-t pt-8 text-center">
-          <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Caltech. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">&copy; {currentYear} Caltech. All rights reserved.</p>
         </div>
       </div>
     </footer>
