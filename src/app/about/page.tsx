@@ -88,7 +88,7 @@ export default function AboutPage() {
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-center mb-12">Meet Our Founders</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {founders.map((founder) => (
-              <Card key={founder.name} className="flex flex-col items-center text-center p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card key={founder.name} className="flex flex-col items-center text-center p-6 shadow-lg hover-glow">
                 <Avatar className="w-28 h-28 mb-4 border-2 border-primary">
                   <AvatarImage src={founder.avatar} alt={founder.name} data-ai-hint={founder.hint} />
                   <AvatarFallback>{founder.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
@@ -111,7 +111,7 @@ export default function AboutPage() {
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-center mb-12">Meet Our Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member) => (
-              <Card key={member.name} className="text-center p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card key={member.name} className="text-center p-6 shadow-lg hover-glow">
                 <Avatar className="w-24 h-24 mx-auto mb-4">
                   <AvatarImage src={member.avatar} alt={member.name} data-ai-hint={member.hint} />
                   <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>

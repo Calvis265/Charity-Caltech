@@ -79,7 +79,7 @@ export default function GetInvolvedPage() {
               Every act of kindness contributes to our mission. Explore more ways you can support our students.
             </p>
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <Card>
+              <Card className="hover-glow">
                 <CardHeader>
                   <CardTitle className="font-headline">Donate</CardTitle>
                 </CardHeader>
@@ -87,7 +87,7 @@ export default function GetInvolvedPage() {
                   <CardDescription>Your financial support helps us fund our programs and reach more students in need.</CardDescription>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="hover-glow">
                 <CardHeader>
                   <CardTitle className="font-headline">Partner With Us</CardTitle>
                 </CardHeader>
@@ -95,7 +95,7 @@ export default function GetInvolvedPage() {
                   <CardDescription>We collaborate with corporations and foundations to create impactful partnerships.</CardDescription>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="hover-glow">
                 <CardHeader>
                   <CardTitle className="font-headline">Spread the Word</CardTitle>
                 </CardHeader>

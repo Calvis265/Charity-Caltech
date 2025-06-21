@@ -55,7 +55,7 @@ export default function SuccessStoriesPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {stories.map((story) => (
-              <Card key={story.title} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card key={story.title} className="flex flex-col overflow-hidden shadow-lg hover-glow">
                 <CardHeader className="p-0">
                   <div className="relative h-48 w-full">
                     <Image

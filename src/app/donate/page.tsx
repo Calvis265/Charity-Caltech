@@ -48,7 +48,7 @@ export default function DonatePage() {
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-center mb-12">Choose Your Impact</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {donationTiers.map((tier) => (
-              <Card key={tier.amount} className="text-center flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card key={tier.amount} className="text-center flex flex-col shadow-lg hover-glow">
                 <CardHeader>
                   <div className="mx-auto p-4 bg-primary/10 rounded-full mb-4">
                     {tier.icon}

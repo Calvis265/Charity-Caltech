@@ -119,4 +119,27 @@
     filter: blur(10px);
     opacity: 0.8;
   }
+
+  .hover-glow {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+  .hover-glow::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    z-index: -1;
+    border-radius: calc(var(--radius) + 3px);
+    background: conic-gradient(from 180deg, hsl(var(--primary)), hsl(var(--accent)));
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .hover-glow:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px -5px hsl(var(--primary) / 0.1);
+  }
+  .hover-glow:hover::before {
+    opacity: 0.6;
+  }
 }

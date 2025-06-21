@@ -146,7 +146,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-center mb-12">Our Programs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {programs.map((program) => (
-              <Card key={program.title} className="text-center flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <Card key={program.title} className="text-center flex flex-col shadow-lg hover-glow">
                 <CardHeader className="items-center">
                   <div className="p-4 bg-primary/10 rounded-full mb-4">
                     {program.icon}
@@ -173,7 +173,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-headline font-semibold text-center mb-12">What People Say</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {testimonials.map((testimonial) => (
-              <Card key={testimonial.name} className="bg-card shadow-lg">
+              <Card key={testimonial.name} className="bg-card shadow-lg hover-glow">
                 <CardContent className="pt-6">
                   <blockquote className="text-lg italic text-muted-foreground border-l-4 border-primary pl-4">
                     "{testimonial.quote}"
