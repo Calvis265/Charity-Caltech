@@ -108,10 +108,10 @@ export default function AdminDashboardPage() {
               <TableHeader>
                 <TableRow>
                   <TableHead>Donator</TableHead>
-                  <TableHead className="hidden xl:table-column">
+                  <TableHead className="hidden xl:table-cell">
                     Type
                   </TableHead>
-                  <TableHead className="hidden xl:table-column">
+                  <TableHead className="hidden xl:table-cell">
                     Status
                   </TableHead>
                   <TableHead className="hidden md:table-cell">
@@ -128,10 +128,10 @@ export default function AdminDashboardPage() {
                       liam@example.com
                     </div>
                   </TableCell>
-                  <TableCell className="hidden xl:table-column">
+                  <TableCell className="hidden xl:table-cell">
                     Donation
                   </TableCell>
-                  <TableCell className="hidden xl:table-column">
+                  <TableCell className="hidden xl:table-cell">
                     <Badge className="text-xs" variant="outline">
                       Approved
                     </Badge>
@@ -148,10 +148,10 @@ export default function AdminDashboardPage() {
                       olivia@example.com
                     </div>
                   </TableCell>
-                  <TableCell className="hidden xl:table-column">
+                  <TableCell className="hidden xl:table-cell">
                     Donation
                   </TableCell>
-                  <TableCell className="hidden xl:table-column">
+                  <TableCell className="hidden xl:table-cell">
                     <Badge className="text-xs" variant="outline">
                       Approved
                     </Badge>
@@ -168,10 +168,10 @@ export default function AdminDashboardPage() {
                       noah@example.com
                     </div>
                   </TableCell>
-                  <TableCell className="hidden xl:table-column">
+                  <TableCell className="hidden xl:table-cell">
                     Donation
                   </TableCell>
-                  <TableCell className="hidden xl:table-column">
+                  <TableCell className="hidden xl:table-cell">
                     <Badge className="text-xs" variant="outline">
                       Approved
                     </Badge>
@@ -188,10 +188,10 @@ export default function AdminDashboardPage() {
                       emma@example.com
                     </div>
                   </TableCell>
-                  <TableCell className="hidden xl:table-column">
+                  <TableCell className="hidden xl:table-cell">
                     Donation
                   </TableCell>
-                   <TableCell className="hidden xl:table-column">
+                   <TableCell className="hidden xl:table-cell">
                     <Badge className="text-xs" variant="destructive">
                       Declined
                     </Badge>
@@ -208,10 +208,10 @@ export default function AdminDashboardPage() {
                       liam@example.com
                     </div>
                   </TableCell>
-                  <TableCell className="hidden xl:table-column">
+                  <TableCell className="hidden xl:table-cell">
                     Donation
                   </TableCell>
-                  <TableCell className="hidden xl:table-column">
+                  <TableCell className="hidden xl:table-cell">
                     <Badge className="text-xs" variant="outline">
                       Approved
                     </Badge>
