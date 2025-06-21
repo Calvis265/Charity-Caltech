@@ -56,9 +56,11 @@
     --chart-4: 335 90% 70%;
     --chart-5: 345 85% 60%;
   }
-}
 
-@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
   * {
     @apply border-border;
   }
