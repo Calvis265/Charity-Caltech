@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   Bell,
   CircleUser,
@@ -43,6 +44,7 @@ const allNavLinks = [
 
 export function AdminLayoutContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [userRole, setUserRole] = useState<string | null>(null);
 
   useEffect(() => {
@@ -66,6 +68,8 @@ export function AdminLayoutContent({ children }: { children: React.ReactNode }) 
   const handleLogout = () => {
     // Clear user session from local storage
     localStorage.removeItem('user');
+    // Redirect to login page
+    router.push('/admin/login');
   };
 
   return (
@@ -182,7 +186,7 @@ export function AdminLayoutContent({ children }: { children: React.ReactNode }) 
               <DropdownMenuItem>Support</DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild><Link href="/">Back to Site</Link></DropdownMenuItem>
-              <DropdownMenuItem onClick={handleLogout} asChild><Link href="/admin/login">Logout</Link></DropdownMenuItem>
+              <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
