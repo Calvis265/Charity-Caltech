@@ -52,8 +52,8 @@ export default function GenerateSuccessStoryPage() {
     if (result.success) {
       setGeneratedStory(result.story.successStory);
       toast({
-        title: "Story Generated!",
-        description: "Your success story has been created below.",
+        title: "Story Created!",
+        description: "Your new story has been created below.",
       });
     } else {
       toast({
@@ -77,9 +77,9 @@ export default function GenerateSuccessStoryPage() {
     <div>
       <section className="bg-primary/10 py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-headline font-bold">Generate a Success Story</h1>
+          <h1 className="text-4xl md:text-5xl font-headline font-bold">Create a Success Story</h1>
           <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Use our AI-powered tool to quickly draft an inspiring story. Just provide a few details, and let our storyteller do the rest.
+            Use our story builder to quickly draft an inspiring story. Just provide a few details, and let our tool do the rest.
           </p>
         </div>
       </section>
@@ -147,7 +147,7 @@ export default function GenerateSuccessStoryPage() {
                       ) : (
                         <Sparkles className="mr-2 h-4 w-4" />
                       )}
-                      Generate Story
+                      Create Story
                     </Button>
                   </form>
                 </Form>
@@ -157,12 +157,12 @@ export default function GenerateSuccessStoryPage() {
             <Card className="shadow-lg">
               <CardHeader>
                 <CardTitle className="font-headline">Generated Story</CardTitle>
-                <CardDescription>Review and edit the AI-generated story below.</CardDescription>
+                <CardDescription>Review and edit the generated story below.</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="relative">
                   <Textarea
-                    placeholder={isLoading ? "Generating your story..." : "Your generated story will appear here."}
+                    placeholder={isLoading ? "Creating your story..." : "Your new story will appear here."}
                     value={generatedStory}
                     onChange={(e) => setGeneratedStory(e.target.value)}
                     className="min-h-[280px] bg-secondary/50"

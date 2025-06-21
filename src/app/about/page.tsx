@@ -8,30 +8,28 @@ const founders = [
     name: 'Calvis Onyango', 
     role: 'Co-Founder & CEO', 
     avatar: 'https://placehold.co/100x100', 
-    hint: 'man smiling',
     description: 'Calvis is the visionary behind Caltech, driven by a lifelong passion for education and a belief in its power to transform lives. He leads the organization with a focus on strategic growth and impactful programs.'
   },
   { 
     name: 'Merceline Onyango', 
     role: 'Co-Founder & Director of Programs', 
     avatar: 'https://placehold.co/100x100', 
-    hint: 'woman portrait',
     description: 'Merceline provides the operational backbone for Caltech. Her expertise in program management and community outreach ensures that our initiatives are effective, sustainable, and truly meet the needs of our students.'
   },
 ];
 
 const teamMembers = [
-  { name: 'Charlie Brown', role: 'Head of Mentorship', avatar: 'https://placehold.co/100x100', hint: 'person glasses' },
-  { name: 'Diana Miller', role: 'Volunteer Coordinator', avatar: 'https://placehold.co/100x100', hint: 'woman smiling' },
-  { name: 'David Lee', role: 'Technology Lead', avatar: 'https://placehold.co/100x100', hint: 'man tech' },
-  { name: 'Sophia Chen', role: 'Community Manager', avatar: 'https://placehold.co/100x100', hint: 'woman community' },
+  { name: 'Charlie Brown', role: 'Head of Mentorship', avatar: 'https://placehold.co/100x100' },
+  { name: 'Diana Miller', role: 'Volunteer Coordinator', avatar: 'https://placehold.co/100x100' },
+  { name: 'David Lee', role: 'Technology Lead', avatar: 'https://placehold.co/100x100' },
+  { name: 'Sophia Chen', role: 'Community Manager', avatar: 'https://placehold.co/100x100' },
 ];
 
 const partners = [
-  { name: 'Global Tech Inc.', logo: 'https://placehold.co/150x50', hint: 'company logo' },
-  { name: 'Community Foundation', logo: 'https://placehold.co/150x50', hint: 'foundation logo' },
-  { name: 'Future Leaders Group', logo: 'https://placehold.co/150x50', hint: 'group logo' },
-  { name: 'Edu-Innovate', logo: 'https://placehold.co/150x50', hint: 'innovate logo' },
+  { name: 'Global Tech Inc.', logo: 'https://placehold.co/150x50' },
+  { name: 'Community Foundation', logo: 'https://placehold.co/150x50' },
+  { name: 'Future Leaders Group', logo: 'https://placehold.co/150x50' },
+  { name: 'Edu-Innovate', logo: 'https://placehold.co/150x50' },
 ];
 
 export default function AboutPage() {
@@ -61,7 +59,6 @@ export default function AboutPage() {
              <Image 
                 src="https://placehold.co/600x400" 
                 alt="Founder talking to students"
-                data-ai-hint="happy children group"
                 fill
                 className="object-cover"
              />
@@ -91,7 +88,7 @@ export default function AboutPage() {
             {founders.map((founder) => (
               <Card key={founder.name} className="flex flex-col items-center text-center p-6 shadow-lg hover-glow">
                 <Avatar className="w-28 h-28 mb-4 border-2 border-primary">
-                  <AvatarImage src={founder.avatar} alt={founder.name} data-ai-hint={founder.hint} />
+                  <AvatarImage src={founder.avatar} alt={founder.name} />
                   <AvatarFallback>{founder.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                 </Avatar>
                 <CardHeader className="p-0">
@@ -114,7 +111,7 @@ export default function AboutPage() {
             {teamMembers.map((member) => (
               <Card key={member.name} className="text-center p-6 shadow-lg hover-glow">
                 <Avatar className="w-24 h-24 mx-auto mb-4">
-                  <AvatarImage src={member.avatar} alt={member.name} data-ai-hint={member.hint} />
+                  <AvatarImage src={member.avatar} alt={member.name} />
                   <AvatarFallback>{member.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                 </Avatar>
                 <h4 className="font-headline font-semibold text-lg">{member.name}</h4>
@@ -134,7 +131,6 @@ export default function AboutPage() {
                  <Image 
                     src={partner.logo} 
                     alt={partner.name} 
-                    data-ai-hint={partner.hint}
                     width={150}
                     height={50}
                     className="object-contain"

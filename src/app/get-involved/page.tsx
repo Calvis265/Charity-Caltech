@@ -24,7 +24,6 @@ export default function GetInvolvedPage() {
                <Image 
                   src="https://placehold.co/600x450" 
                   alt="Volunteers working together"
-                  data-ai-hint="volunteers smiling"
                   fill
                   className="object-cover"
                />
@@ -64,7 +63,6 @@ export default function GetInvolvedPage() {
               <Image 
                 src="https://placehold.co/600x450" 
                 alt="Mentor guiding a student"
-                data-ai-hint="mentor student"
                 fill
                 className="object-cover"
               />

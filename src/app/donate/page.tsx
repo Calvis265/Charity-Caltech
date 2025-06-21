@@ -84,7 +84,6 @@ export default function DonatePage() {
              <Image 
                 src="https://placehold.co/600x450" 
                 alt="Happy student receiving support"
-                data-ai-hint="happy student"
                 fill
                 className="object-cover"
              />

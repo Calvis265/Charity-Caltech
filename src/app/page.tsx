@@ -20,21 +20,18 @@ export default function Home() {
   const heroSlides = [
     {
       imageSrc: "https://placehold.co/1600x900",
-      imageHint: "children learning",
       alt: "Children learning in a classroom",
       title: "Empowering Futures, One Student at a Time",
       subtitle: "Providing access to quality education, mentorship, and support for students in need.",
     },
     {
       imageSrc: "https://placehold.co/1600x900",
-      imageHint: "student graduation",
       alt: "A student celebrating their graduation",
       title: "Building a Foundation for Success",
       subtitle: "Our programs equip students with the skills and confidence to achieve their dreams.",
     },
     {
       imageSrc: "https://placehold.co/1600x900",
-      imageHint: "community support",
       alt: "Community members working together",
       title: "Join Us in Making a Difference",
       subtitle: "Your support can change a life. Become a part of our mission to create a brighter future.",
@@ -70,14 +67,12 @@ export default function Home() {
       name: 'Calvis Onyango',
       role: 'University Student',
       avatar: 'https://placehold.co/100x100',
-      hint: 'student smiling'
     },
     {
       quote: "Volunteering as a mentor has been an incredibly rewarding experience. Seeing the impact on these young lives is priceless.",
       name: 'Merceline Onyango',
       role: 'Volunteer Mentor',
       avatar: 'https://placehold.co/100x100',
-      hint: 'woman portrait'
     },
   ];
 
@@ -101,7 +96,6 @@ export default function Home() {
                   <Image
                     src={slide.imageSrc}
                     alt={slide.alt}
-                    data-ai-hint={slide.imageHint}
                     fill
                     className="absolute inset-0 z-0 brightness-50 object-cover"
                     priority={index === 0}
@@ -147,7 +141,6 @@ export default function Home() {
              <Image 
                 src="https://placehold.co/600x400" 
                 alt="Founder talking to students"
-                data-ai-hint="happy children group"
                 fill
                 className="object-cover"
              />
@@ -218,7 +211,7 @@ export default function Home() {
                   </blockquote>
                   <div className="flex items-center mt-6">
                     <Avatar>
-                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} data-ai-hint={testimonial.hint} />
+                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                       <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <div className="ml-4">
