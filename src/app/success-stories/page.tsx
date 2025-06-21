@@ -63,8 +63,8 @@ export default function SuccessStoriesPage() {
                       src={story.image}
                       alt={`Image for ${story.title}`}
                       data-ai-hint={story.hint}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      className="object-cover"
                     />
                   </div>
                   <div className="p-6">

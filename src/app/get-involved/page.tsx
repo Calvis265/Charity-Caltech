@@ -24,8 +24,8 @@ export default function GetInvolvedPage() {
                   src="https://placehold.co/600x450" 
                   alt="Volunteers working together"
                   data-ai-hint="volunteers smiling"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  className="object-cover"
                />
             </div>
             <div className="max-w-xl">
@@ -64,8 +64,8 @@ export default function GetInvolvedPage() {
                 src="https://placehold.co/600x450" 
                 alt="Mentor guiding a student"
                 data-ai-hint="mentor student"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
               />
             </div>
           </div>

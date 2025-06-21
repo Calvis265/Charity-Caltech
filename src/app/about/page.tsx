@@ -61,8 +61,8 @@ export default function AboutPage() {
                 src="https://placehold.co/600x400" 
                 alt="Founder talking to students"
                 data-ai-hint="happy children group"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
              />
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function AboutPage() {
                     data-ai-hint={partner.hint}
                     width={150}
                     height={50}
-                    objectFit="contain"
+                    className="object-contain"
                   />
               </div>
             ))}

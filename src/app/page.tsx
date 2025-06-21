@@ -101,9 +101,8 @@ export default function Home() {
                     src={slide.imageSrc}
                     alt={slide.alt}
                     data-ai-hint={slide.imageHint}
-                    layout="fill"
-                    objectFit="cover"
-                    className="absolute inset-0 z-0 brightness-50"
+                    fill
+                    className="absolute inset-0 z-0 brightness-50 object-cover"
                     priority={index === 0}
                   />
                   <div className="relative z-10 p-4 max-w-4xl">
@@ -148,8 +147,8 @@ export default function Home() {
                 src="https://placehold.co/600x400" 
                 alt="Founder talking to students"
                 data-ai-hint="happy children group"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
              />
           </div>
         </div>

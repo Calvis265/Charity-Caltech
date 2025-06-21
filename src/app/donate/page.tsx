@@ -85,8 +85,8 @@ export default function DonatePage() {
                 src="https://placehold.co/600x450" 
                 alt="Happy student receiving support"
                 data-ai-hint="happy student"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
              />
           </div>
           <div>
