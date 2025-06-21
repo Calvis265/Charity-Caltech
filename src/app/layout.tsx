@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
-import { MainLayout } from '@/components/layout/main-layout';
+import { ConditionalLayout } from '@/components/layout/conditional-layout';
 
 export const metadata: Metadata = {
   title: 'Caltech',
@@ -25,7 +25,7 @@ export default function RootLayout({
         />
       </head>
       <body className={cn('min-h-screen bg-background font-body antialiased')}>
-        <MainLayout>{children}</MainLayout>
+        <ConditionalLayout>{children}</ConditionalLayout>
         <Toaster />
       </body>
     </html>
