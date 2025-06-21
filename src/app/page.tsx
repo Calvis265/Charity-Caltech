@@ -1,11 +1,45 @@
+"use client";
+
+import * as React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import Autoplay from "embla-carousel-autoplay";
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { BookOpen, Utensils, Users, Laptop, Feather, HeartHandshake } from 'lucide-react';
 
 export default function Home() {
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
+  
+  const heroSlides = [
+    {
+      imageSrc: "https://placehold.co/1600x900",
+      imageHint: "children learning",
+      alt: "Children learning in a classroom",
+      title: "Empowering Futures, One Student at a Time",
+      subtitle: "We are dedicated to providing needy and vulnerable students with access to quality education, mentorship, and support.",
+    },
+    {
+      imageSrc: "https://placehold.co/1600x900",
+      imageHint: "student graduation",
+      alt: "A student celebrating their graduation",
+      title: "Building a Foundation for Success",
+      subtitle: "Our programs equip students with the skills and confidence to achieve their dreams.",
+    },
+    {
+      imageSrc: "https://placehold.co/1600x900",
+      imageHint: "community support",
+      alt: "Community members working together",
+      title: "Join Us in Making a Difference",
+      subtitle: "Your support can change a life. Become a part of our mission to create a brighter future.",
+    },
+  ];
+
   const programs = [
     {
       icon: <BookOpen className="size-8 text-primary" />,
@@ -53,26 +87,47 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[80vh] w-full flex items-center justify-center text-center text-white">
-        <Image
-          src="https://placehold.co/1600x900"
-          alt="Children learning in a classroom"
-          data-ai-hint="children learning"
-          layout="fill"
-          objectFit="cover"
-          className="absolute inset-0 z-0 brightness-50"
-        />
-        <div className="relative z-10 p-4 max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4 drop-shadow-lg">
-            Empowering Futures, One Student at a Time
-          </h1>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">
-            We are dedicated to providing needy and vulnerable students with access to quality education, mentorship, and support.
-          </p>
-          <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-            <Link href="/donate">Donate Now</Link>
-          </Button>
-        </div>
+       <section className="relative w-full">
+        <Carousel
+          plugins={[plugin.current]}
+          className="w-full"
+          onMouseEnter={plugin.current.stop}
+          onMouseLeave={plugin.current.reset}
+          opts={{
+            loop: true,
+          }}
+        >
+          <CarouselContent>
+            {heroSlides.map((slide, index) => (
+              <CarouselItem key={index}>
+                <div className="relative h-[60vh] md:h-[80vh] w-full flex items-center justify-center text-center text-white">
+                  <Image
+                    src={slide.imageSrc}
+                    alt={slide.alt}
+                    data-ai-hint={slide.imageHint}
+                    layout="fill"
+                    objectFit="cover"
+                    className="absolute inset-0 z-0 brightness-50"
+                    priority={index === 0}
+                  />
+                  <div className="relative z-10 p-4 max-w-4xl">
+                    <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4 drop-shadow-lg">
+                      {slide.title}
+                    </h1>
+                    <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto drop-shadow-md">
+                      {slide.subtitle}
+                    </p>
+                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                      <Link href="/donate">Donate Now</Link>
+                    </Button>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex bg-background/50 hover:bg-background/80 border-none text-white" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 hidden md:flex bg-background/50 hover:bg-background/80 border-none text-white" />
+        </Carousel>
       </section>
 
       {/* Our Mission Section */}
