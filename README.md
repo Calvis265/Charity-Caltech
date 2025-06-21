@@ -5,11 +5,15 @@ This is a full-featured, responsive website for "Caltech," a non-profit organiza
 ## Key Features
 
 - **Modern & Responsive Design**: Clean and accessible user experience on any device.
-- **Dynamic Pages**: Includes sections for About Us, Programs, Success Stories, How to Get Involved, and Contact.
-- **Admin Section**: A secure area for administrators to manage the site, complete with login, sign-up, and forgot password functionality.
-- **Donation System**: A user-friendly donation page with preset tiers and a custom amount option, designed to integrate with M-Pesa for payment processing.
-- **AI-Powered Content Generation**: An internal tool for admins to quickly generate uplifting success stories based on student data, powered by Google's Gemini model via Genkit.
-- **Interactive Components**: Features an autoplay carousel on the homepage, testimonials, and interactive cards.
+- **Dynamic Public-Facing Pages**: Includes sections for About Us, Programs, Success Stories, How to Get Involved, and Contact.
+- **Secure Admin Section**: A feature-rich area for site management with a dedicated dashboard layout.
+- **Full Authentication Flow**: Complete with login, sign-up, and forgot password functionality to protect admin routes.
+- **Role-Based Access Control (RBAC)**: Two pre-configured roles (`Admin` and `Story Contributor`) to manage permissions. Admins have full access, while Story Contributors can only create content.
+- **Volunteer Management**: A full CRUD (Create, Read, Update, Delete) interface for managing volunteers, including profile picture uploads.
+- **Dynamic Donation System**: A user-friendly donation page with preset tiers and a custom amount option. Features a pop-up modal to initiate payments via a placeholder M-Pesa integration.
+- **AI-Powered Story Generation**: An internal tool for admins to quickly generate uplifting success stories based on student data and an optional photo, powered by Google's Gemini model via Genkit.
+- **Interactive UI Components**: Features an autoplay carousel on the homepage, testimonials, and modern, interactive cards and forms built with ShadCN UI.
+
 
 ## Tech Stack
 
