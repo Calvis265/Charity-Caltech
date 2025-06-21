@@ -6,9 +6,11 @@ import { useEffect, useState } from 'react';
 
 export function Footer() {
   const [year, setYear] = useState<number | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
+    setIsMounted(true);
   }, []);
 
   const socialLinks = [
@@ -52,22 +54,28 @@ export function Footer() {
           </div>
           <div>
             <h4 className="font-semibold mb-4">Our Location</h4>
-            <div className="aspect-video w-full rounded-lg overflow-hidden shadow-lg">
-               <iframe
-                src="https://maps.google.com/maps?q=123%20Education%20Lane,%20Knowledge%20City&z=13&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                className="grayscale hover:grayscale-0 transition-all duration-300"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Google Maps Location of Caltech"
-              ></iframe>
-            </div>
-             <address className="not-italic text-sm text-muted-foreground mt-2">
-              <p>123 Education Lane, Knowledge City, 12345</p>
-            </address>
+            {isMounted ? (
+               <>
+                <div className="aspect-video w-full rounded-lg overflow-hidden shadow-lg">
+                   <iframe
+                    src="https://maps.google.com/maps?q=123%20Education%20Lane,%20Knowledge%20City&z=13&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="100%"
+                    className="grayscale hover:grayscale-0 transition-all duration-300"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Google Maps Location of Caltech"
+                  ></iframe>
+                </div>
+                 <address className="not-italic text-sm text-muted-foreground mt-2">
+                  <p>123 Education Lane, Knowledge City, 12345</p>
+                </address>
+               </>
+            ) : (
+              <div className="aspect-video w-full rounded-lg bg-muted animate-pulse"></div>
+            )}
           </div>
         </div>
         <div className="mt-12 border-t pt-8 text-center">
