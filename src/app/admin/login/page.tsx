@@ -98,7 +98,7 @@ export default function AdminLoginPage() {
         >
           <div
             className={cn(
-              'overlay relative -left-full h-full w-[200%] text-primary-foreground transition-transform duration-700 ease-in-out bg-gradient-to-r from-primary to-accent',
+              'overlay relative -left-full h-full w-[200%] text-primary-foreground transition-transform duration-700 ease-in-out bg-gradient-to-r from-secondary to-accent',
               { 'translate-x-1/2': isSignUp }
             )}
           >
